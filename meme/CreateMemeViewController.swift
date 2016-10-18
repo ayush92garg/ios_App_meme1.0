@@ -57,7 +57,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         let pickController = UIImagePickerController()
         pickController.delegate = self
         pickController.sourceType = fromSource
-        pickController.allowsEditing = true
+        //pickController.allowsEditing = true
         self.present(pickController,animated: true, completion: nil)
     }
     
@@ -103,8 +103,9 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
+            actionButton.isEnabled = true
         }
         
         dismiss(animated: true, completion: nil)
@@ -112,6 +113,30 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func calculateRectOfImageInImageView(imageView: UIImageView) -> CGRect {
+        let imageViewSize = imageView.frame.size
+        let imgSize = imageView.image?.size
+        
+        guard let imageSize = imgSize , imgSize != nil else {
+            return CGRect.zero
+        }
+        
+        let scaleWidth = imageViewSize.width / imageSize.width
+        let scaleHeight = imageViewSize.height / imageSize.height
+        let aspect = fmin(scaleWidth, scaleHeight)
+        
+        var imageRect = CGRect(x: 0, y: 0, width: imageSize.width * aspect, height: imageSize.height * aspect)
+        // Center image
+        imageRect.origin.x = (imageViewSize.width - imageRect.size.width) / 2
+        imageRect.origin.y = (imageViewSize.height - imageRect.size.height) / 2
+        
+        // Add imageView offset
+        imageRect.origin.x += imageView.frame.origin.x
+        imageRect.origin.y += imageView.frame.origin.y
+        
+        return imageRect
     }
     
     func generateMemedImage() -> UIImage {
@@ -133,12 +158,15 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func setLayoutBasedOnOrientation(){
-        if UIDevice.current.orientation.isLandscape {
-            bottomContraintUiView.constant = 45
-            imageView.frame = CGRect(x: 0,y:0, width:100, height:100)
+        let imagePosition = calculateRectOfImageInImageView(imageView: imageView)
+        if imagePosition == CGRect.zero {
+            topTextField.isHidden = true
+            bottomTextField.isHidden = true
         }else{
-            bottomContraintUiView.constant = 162
-            imageView.frame = CGRect(x: 0,y:0, width:343, height:343)
+            topTextField.isHidden = false
+            bottomTextField.isHidden = false
+            topTextField.frame = CGRect(x: imagePosition.origin.x + 5, y: imagePosition.origin.y + 15, width: imagePosition.width - 10, height: 30)
+            bottomTextField.frame = CGRect(x: imagePosition.origin.x + 5, y: imagePosition.origin.y + imagePosition.height - 45, width: imagePosition.width - 10, height: 30)
         }
     }
 
@@ -167,13 +195,20 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         setLayoutBasedOnOrientation()
         camButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         subscribeToKeyboardNotifications()
+        if imageView.image == nil {
+            actionButton.isEnabled = false
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         unsubscribeFromKeyboardNotifications()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        setLayoutBasedOnOrientation()
+//    }
+    
+    override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         setLayoutBasedOnOrientation()
     }
 }

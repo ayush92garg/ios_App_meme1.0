@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="redraw" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="SRg-mm-vRL">
@@ -29,7 +29,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="neG-Po-6mM"/>
                                     <barButtonItem style="plain" id="sz5-aL-3qy">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ktI-EY-th6">
-                                            <rect key="frame" x="605" y="7" width="42" height="30"/>
+                                            <rect key="frame" x="317" y="7" width="42" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Pick"/>
                                             <connections>
@@ -55,18 +55,19 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IkI-AH-SL7">
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="IkI-AH-SL7" secondAttribute="height" multiplier="1:1" id="J5I-8A-hJz"/>
-                                </constraints>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlN-32-cfW">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlN-32-cfW">
+                                <frame key="frameInset" minX="175" minY="458" width="25" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clc-at-u5C">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clc-at-u5C">
+                                <frame key="frameInset" minX="175" minY="179" width="25" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
@@ -74,19 +75,17 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Clc-at-u5C" firstAttribute="trailing" secondItem="IkI-AH-SL7" secondAttribute="trailing" constant="-15" id="4A2-n5-H5t"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="162" id="6PW-xi-WyQ"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="1SD-fC-72B"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="44" id="6PW-xi-WyQ"/>
                             <constraint firstAttribute="trailing" secondItem="SRg-mm-vRL" secondAttribute="trailing" id="7ey-yB-aTy"/>
                             <constraint firstAttribute="trailing" secondItem="2nN-xu-8dG" secondAttribute="trailing" id="86M-NO-gmH"/>
-                            <constraint firstItem="XlN-32-cfW" firstAttribute="trailing" secondItem="IkI-AH-SL7" secondAttribute="trailing" constant="-15" id="Ch1-7e-eI4"/>
-                            <constraint firstItem="Clc-at-u5C" firstAttribute="leading" secondItem="IkI-AH-SL7" secondAttribute="leading" constant="15" id="EnA-Jj-JZ7"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="AwY-pZ-T0y"/>
                             <constraint firstItem="IkI-AH-SL7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NKe-AU-fI5"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ONc-Tj-5jM"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="ONc-Tj-5jM"/>
                             <constraint firstItem="2nN-xu-8dG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Um2-Kw-TQd"/>
-                            <constraint firstItem="XlN-32-cfW" firstAttribute="leading" secondItem="IkI-AH-SL7" secondAttribute="leading" constant="15" id="XqM-u4-aBY"/>
-                            <constraint firstItem="XlN-32-cfW" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="-47" id="awk-Wd-lMD"/>
+                            <constraint firstItem="SRg-mm-vRL" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" id="WxL-Ah-rqU"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SRg-mm-vRL" secondAttribute="bottom" id="du9-zq-Uu5"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="top" secondItem="Clc-at-u5C" secondAttribute="bottom" constant="-47" id="kLs-RA-nF5"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="top" secondItem="2nN-xu-8dG" secondAttribute="bottom" id="mms-Im-giu"/>
                             <constraint firstItem="2nN-xu-8dG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="pLn-wI-pNX"/>
                             <constraint firstItem="SRg-mm-vRL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rnq-3i-o0P"/>
                         </constraints>
