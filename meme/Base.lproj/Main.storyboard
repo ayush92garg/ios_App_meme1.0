@@ -3,20 +3,20 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Create Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CreateMemeViewController" customModule="meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="redraw" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="SRg-mm-vRL">
@@ -29,7 +29,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="neG-Po-6mM"/>
                                     <barButtonItem style="plain" id="sz5-aL-3qy">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ktI-EY-th6">
-                                            <rect key="frame" x="317" y="7" width="42" height="30"/>
+                                            <rect key="frame" x="605" y="7" width="42" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Pick"/>
                                             <connections>
@@ -54,43 +54,46 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IkI-AH-SL7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IkI-AH-SL7">
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IkI-AH-SL7" secondAttribute="height" multiplier="1:1" id="J5I-8A-hJz"/>
+                                </constraints>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clc-at-u5C">
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XlN-32-cfW">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Clc-at-u5C">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Clc-at-u5C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="0xE-Z9-EIf"/>
-                            <constraint firstItem="XlN-32-cfW" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="-51" id="5Su-aC-sf4"/>
+                            <constraint firstItem="Clc-at-u5C" firstAttribute="trailing" secondItem="IkI-AH-SL7" secondAttribute="trailing" constant="-15" id="4A2-n5-H5t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="162" id="6PW-xi-WyQ"/>
                             <constraint firstAttribute="trailing" secondItem="SRg-mm-vRL" secondAttribute="trailing" id="7ey-yB-aTy"/>
                             <constraint firstAttribute="trailing" secondItem="2nN-xu-8dG" secondAttribute="trailing" id="86M-NO-gmH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Clc-at-u5C" secondAttribute="trailing" constant="15" id="9wf-Uy-XHU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XlN-32-cfW" secondAttribute="trailing" constant="15" id="EB5-t6-KWD"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EPl-pJ-eDC"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="top" secondItem="Clc-at-u5C" secondAttribute="bottom" constant="-58" id="KkY-dP-alL"/>
-                            <constraint firstItem="SRg-mm-vRL" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="23" id="RX5-kr-1Jx"/>
+                            <constraint firstItem="XlN-32-cfW" firstAttribute="trailing" secondItem="IkI-AH-SL7" secondAttribute="trailing" constant="-15" id="Ch1-7e-eI4"/>
+                            <constraint firstItem="Clc-at-u5C" firstAttribute="leading" secondItem="IkI-AH-SL7" secondAttribute="leading" constant="15" id="EnA-Jj-JZ7"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NKe-AU-fI5"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ONc-Tj-5jM"/>
                             <constraint firstItem="2nN-xu-8dG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Um2-Kw-TQd"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="top" secondItem="2nN-xu-8dG" secondAttribute="bottom" constant="22" id="Xxs-GP-dHi"/>
+                            <constraint firstItem="XlN-32-cfW" firstAttribute="leading" secondItem="IkI-AH-SL7" secondAttribute="leading" constant="15" id="XqM-u4-aBY"/>
+                            <constraint firstItem="XlN-32-cfW" firstAttribute="top" secondItem="IkI-AH-SL7" secondAttribute="bottom" constant="-47" id="awk-Wd-lMD"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SRg-mm-vRL" secondAttribute="bottom" id="du9-zq-Uu5"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="eNa-1Y-jy8"/>
-                            <constraint firstItem="IkI-AH-SL7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fJf-jL-Swc"/>
-                            <constraint firstItem="XlN-32-cfW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="15" id="l3g-5t-V6J"/>
+                            <constraint firstItem="IkI-AH-SL7" firstAttribute="top" secondItem="Clc-at-u5C" secondAttribute="bottom" constant="-47" id="kLs-RA-nF5"/>
                             <constraint firstItem="2nN-xu-8dG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="pLn-wI-pNX"/>
                             <constraint firstItem="SRg-mm-vRL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rnq-3i-o0P"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="gac-Xk-E3A" id="p2K-RK-eqc"/>
+                        <outlet property="bottomContraintUiView" destination="6PW-xi-WyQ" id="M9N-gu-50A"/>
                         <outlet property="bottomTextField" destination="XlN-32-cfW" id="EIy-iW-vYX"/>
                         <outlet property="bottomToolBar" destination="SRg-mm-vRL" id="Upw-U1-qfs"/>
                         <outlet property="camButton" destination="xod-Nx-Rbp" id="tvk-WF-L3A"/>
