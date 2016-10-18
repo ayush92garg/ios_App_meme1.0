@@ -38,9 +38,10 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     @IBAction func cancelButtonClicked(_ sender: AnyObject) {
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        topTextField.isHidden = true
+        bottomTextField.isHidden = true
         imageView.image = nil
+        actionButton.isEnabled = false
     }
     
     @IBAction func actionButtonClicked(_ sender: AnyObject) {
